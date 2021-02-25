@@ -32,8 +32,10 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
     }
 
     private void insertBefore(Node node, Node beforeNode) {
-        System.out.println("insertBefore "+ node.value);
-        node.link(beforeNode.getPrevious(), beforeNode);
+        System.out.println("insertBefore "+ beforeNode.value);
+        Node previousBeforeNode = beforeNode.getPrevious();
+        node.link(previousBeforeNode, beforeNode);
+        previousBeforeNode.linkNext(node);
         beforeNode.linkPrevious(node);
         midMovement = (node.value.compareTo(mid.value) > 0)? midMovement+0.5f : midMovement-0.5f;
         size += 1;
@@ -41,8 +43,10 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
     }
     
     private void insertAfter(Node node, Node afterNode) {
-        System.out.println("insertAfter "+ node.value);
-        node.link(afterNode, afterNode.getNext());
+        System.out.println("insertAfter "+ afterNode.value);
+        Node nextAfterNode = afterNode.getNext();
+        node.link(afterNode, nextAfterNode);
+        nextAfterNode.linkPrevious(node);
         afterNode.linkNext(node);
         midMovement = (node.value.compareTo(mid.value) > 0)? midMovement+0.5f : midMovement-0.5f;
         size += 1;
@@ -123,18 +127,22 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
                     case MID_TO_HEAD:
                         System.out.println("Mid to Head");
                         Node ptr = mid;
-                        while(ptr.hasPrevious()) {
-                            if(item.compareTo(ptr.value) >= 0)
+                        while(ptr.toBoolean()) {
+                            if(item.compareTo(ptr.value) >= 0) {
                                 insertAfter(entry, ptr);
+                                break;
+                            }
                             ptr = ptr.getPrevious();
                         }
                         break;
                     case MID_TO_TAIL:
                         System.out.println("Mid to tail");
                         ptr = mid;
-                        while(ptr.hasNext()) {
-                            if(item.compareTo(ptr.value) <= 0)
+                        while(ptr.toBoolean()) {
+                            if(item.compareTo(ptr.value) <= 0) {
                                 insertBefore(entry, ptr);
+                                break;
+                            }
                             ptr = ptr.getNext();
                         }
                         break;
