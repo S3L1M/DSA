@@ -32,7 +32,6 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
     }
 
     private void insertBefore(Node node, Node beforeNode) {
-        System.out.println("insertBefore "+ beforeNode.value);
         Node previousBeforeNode = beforeNode.getPrevious();
         node.link(previousBeforeNode, beforeNode);
         previousBeforeNode.linkNext(node);
@@ -43,7 +42,6 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
     }
     
     private void insertAfter(Node node, Node afterNode) {
-        System.out.println("insertAfter "+ afterNode.value);
         Node nextAfterNode = afterNode.getNext();
         node.link(afterNode, nextAfterNode);
         nextAfterNode.linkPrevious(node);
@@ -55,12 +53,10 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
 
     private void updateMidPos() {
         if(midMovement == 1.0f) {
-            System.out.println("Going to next");
             mid = mid.getNext();
             midMovement = 0;
         }
         else if(midMovement == -1.0f) {
-            System.out.println("Going to previous");
             mid = mid.getPrevious();
             midMovement = 0;
         }
@@ -81,13 +77,11 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
         Node entry = new Node(item);
         switch(size) {
             case 0:
-                System.out.println("Case 0");
                 head = mid = tail = entry;
                 size = 1;
                 break;
 
             case 1:
-                System.out.println("Case 1");
                 if(item.compareTo(head.value) >= 0) {
                     tail.linkNext(entry);
                     entry.linkPrevious(tail);
@@ -102,7 +96,6 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
                 break;
 
             case 2:
-                System.out.println("Case 2");
                 if(item.compareTo(tail.value) >= 0) {
                     tail.linkNext(entry);
                     entry.linkPrevious(tail);
@@ -122,10 +115,8 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
                 break;
                 
             default:
-                System.out.println("Default");
                 switch(findRange(item)) {
                     case MID_TO_HEAD:
-                        System.out.println("Mid to Head");
                         Node ptr = mid;
                         while(ptr.toBoolean()) {
                             if(item.compareTo(ptr.value) >= 0) {
@@ -136,7 +127,6 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
                         }
                         break;
                     case MID_TO_TAIL:
-                        System.out.println("Mid to tail");
                         ptr = mid;
                         while(ptr.toBoolean()) {
                             if(item.compareTo(ptr.value) <= 0) {
@@ -147,11 +137,9 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
                         }
                         break;
                     case AFTER_TAIL:
-                        System.out.println("After tail");
                         push_back(entry);
                         break;
                     case BEFORE_HEAD:
-                        System.out.println("Before head");
                         push_front(entry);
                 }
         }
