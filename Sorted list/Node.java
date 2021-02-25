@@ -78,6 +78,10 @@ class Node {
         return hasNext;
     }
 
+    public boolean toBoolean() {
+        return (value == null)? false : true;
+    }
+
     @Override
     public String toString() {
         return value.toString();
