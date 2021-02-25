@@ -156,9 +156,23 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
     }
 
     @Override
-    public Comparable get(int i) {
-        // TODO Auto-generated method stub
-        return null;
+    public Comparable get(int index) {
+        if (index == size -1)
+            return tail.value;
+        else if (index == 0)
+            return head.value;
+        else if (index >= size)
+            return null;
+        else {
+            Node ptr = head.getNext();
+            int i = 1;
+            while (i != index) {
+                ptr = ptr.getNext();
+                i++;
+            }
+
+            return ptr.value;
+        }
     }
 
     @Override
