@@ -177,8 +177,16 @@ class SortedList implements SortedListInterface {  // Sorted in accending order
 
     @Override
     public int indexOf(Comparable item) {
-        // TODO Auto-generated method stub
-        return 0;
+        if(item.compareTo(head.value) == 0)
+            return 0;
+        else if(item.compareTo(tail.value) == 0)
+            return size - 1;
+        else {
+            Node ptr = head.getNext();
+            for(int i = 1; i < size-1; i++)
+                if(item.compareTo(ptr.value) == 0)
+                    return i;
+        }
     }
 
     @Override
