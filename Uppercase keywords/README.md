@@ -1,25 +1,31 @@
-## UPPERCASE keywords in a set of statement
-Find a set of sentences containing a keyword and set its characters to uppercase for each keyword
-<br /> <br />
+## UPPERCASE Keywords in a Set of Sentences
 
-**Input:** `in.txt` file containing:
-1. Set of sentences in one line.
-2. Number of keywords.
-3. Each keyword in a seprate line.
+Processes a set of sentences and transforms specific keywords within those sentences to uppercase.
 
-**Output:** `out.txt` file containg Number of sentences containing a keyword followed by the sentences where keyword is set to uppercase form.
+### Problem Statement
 
-**Executable file:** [Windows exe](Debug/UPPERCASE_words_sentences.exe)
+- **Input:** The program takes input from an `in.txt` file, which includes the following:
+   1. A set of sentences contained within a single line.
+   2. The number of keywords.
+   3. Each keyword on a separate line.
 
-### Dependences
-**Compiler Version:** C++17
+- **Output:** The program generates an `out.txt` file that contains:
+   - The number of sentences containing a keyword.
+   - The sentences where the keyword is set to uppercase form.
 
-**Libraries**
+### Execution
+
+- **Executable file:** [Windows exe](Debug/UPPERCASE_words_sentences.exe)
+
+### Dependencies
+
+- **Compiler Version:** C++17
+
+### Libraries
+
+The program utilizes the following C++ libraries:
 - iostream
 - fstream
 - vector
 - string
 - charconv
-
-
-© Created by Mohamed Selim
