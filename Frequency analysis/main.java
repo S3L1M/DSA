@@ -1,11 +1,10 @@
 import java.util.*;
 
-class HelloWorld {
+class Main {
     public static void main(String[] args) {
 
         // Geting input
         Scanner sc = new Scanner(System.in);
-        sc.nextLine();
         String[] words = sc.nextLine().split(" ");
         sc.close();
 
